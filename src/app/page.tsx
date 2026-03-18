@@ -51,7 +51,7 @@ export default function Home() {
       .then((data: Model[]) => {
         if (Array.isArray(data)) {
           setModels(data);
-          const preferred = data.find((m) => m.id === "google/gemini-3.1-flash-lite-preview");
+          const preferred = data.find((m) => m.id === "google/gemini-2.5-flash-lite");
           if (preferred) setSelectedModel(preferred.id);
           else if (data.length > 0) setSelectedModel(data[0].id);
         }
