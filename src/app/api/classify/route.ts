@@ -115,7 +115,7 @@ Rules:
     if (isUnsupportedImage) {
       return NextResponse.json(
         {
-          error: `The selected model does not support image inputs. Please choose a vision-capable model (e.g. Gemini Flash, GPT-4o, Claude Sonnet).`,
+          error: `The selected model does not support image inputs. Please choose a vision-capable model (check on https://vercel.com/ai-gateway/models?capabilities=image-generation).`,
         },
         { status: 400 }
       );
