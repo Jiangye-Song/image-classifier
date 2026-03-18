@@ -9,6 +9,7 @@ interface ClassificationResult {
   reasoning: string;
   detectedItems: string[];
   asbestosLikelihood: number;
+  isOverfilled: "Yes" | "No" | "N/A";
 }
 
 interface Model {
@@ -349,6 +350,33 @@ export default function Home() {
                     {result.asbestosLikelihood >= 50 && (
                       <p className="text-xs text-red-400 mt-2">
                         This material may contain asbestos. Handle with extreme caution and consult a licensed assessor.
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Overfilled Status */}
+                  <div className={`p-3 rounded-lg border ${
+                    result.isOverfilled === "Yes"
+                      ? "bg-red-500/15 border-red-500/40"
+                      : result.isOverfilled === "No"
+                      ? "bg-emerald-500/15 border-emerald-500/40"
+                      : "bg-slate-900/50 border-transparent"
+                  }`}>
+                    <div className="flex justify-between text-sm">
+                      <span className="font-semibold text-slate-300">Bin Overfilled</span>
+                      <span className={`font-semibold ${
+                        result.isOverfilled === "Yes"
+                          ? "text-red-400"
+                          : result.isOverfilled === "No"
+                          ? "text-emerald-400"
+                          : "text-slate-500"
+                      }`}>
+                        {result.isOverfilled === "Yes" ? "⚠ Yes" : result.isOverfilled}
+                      </span>
+                    </div>
+                    {result.isOverfilled === "Yes" && (
+                      <p className="text-xs text-red-400 mt-1">
+                        Materials appear to exceed the bin rim. This may incur additional charges.
                       </p>
                     )}
                   </div>
