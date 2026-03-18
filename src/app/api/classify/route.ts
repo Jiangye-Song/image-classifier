@@ -93,19 +93,29 @@ Rules:
   } catch (error: unknown) {
     console.error("Classification error:", error);
 
-    const message =
-      error instanceof Error ? error.message : String(error);
+    // Collect all error text: message, cause message, responseBody
+    const parts: string[] = [];
+    if (error instanceof Error) {
+      parts.push(error.message);
+      const cause = (error as { cause?: unknown }).cause;
+      if (cause instanceof Error) {
+        parts.push(cause.message);
+        const responseBody = (cause as { responseBody?: string }).responseBody;
+        if (typeof responseBody === "string") parts.push(responseBody);
+      }
+    }
+    const fullErrorText = parts.join(" ");
 
     // Detect multimodal / image-not-supported errors from providers
     const isUnsupportedImage =
-      /image|multimodal|vision|does not support|content type|invalid_request.*image|Could not process image|Unsupported input modality/i.test(
-        message
+      /image_url|image content block|not support.*image|does not support|content type.*not supported|Only 'text'|multimodal|Method Not Allowed|messages\[0\]\.content must be a string/i.test(
+        fullErrorText
       );
 
     if (isUnsupportedImage) {
       return NextResponse.json(
         {
-          error: `The selected model does not support image inputs. Unfortunately there's no programmatical way to filter image input models, but you may check this list: https://vercel.com/ai-gateway/models?capabilities=image-generation`,
+          error: `The selected model does not support image inputs. Please choose a vision-capable model (e.g. Gemini Flash, GPT-4o, Claude Sonnet).`,
         },
         { status: 400 }
       );
