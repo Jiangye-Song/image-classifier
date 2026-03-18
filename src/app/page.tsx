@@ -142,13 +142,12 @@ export default function Home() {
           {/* Left Column - Upload */}
           <div className="space-y-6">
             <div
-              className={`relative border-2 border-dashed rounded-2xl p-8 text-center transition-all cursor-pointer ${
-                dragActive
-                  ? "border-blue-400 bg-blue-400/10"
-                  : image
+              className={`relative border-2 border-dashed rounded-2xl p-8 text-center transition-all cursor-pointer ${dragActive
+                ? "border-blue-400 bg-blue-400/10"
+                : image
                   ? "border-slate-600"
                   : "border-slate-600 hover:border-slate-400 hover:bg-slate-800/50"
-              }`}
+                }`}
               onDragEnter={handleDrag}
               onDragOver={handleDrag}
               onDragLeave={handleDrag}
@@ -285,9 +284,8 @@ export default function Home() {
                 <div className="p-6 bg-slate-800/80 rounded-2xl border border-slate-700">
                   <div className="flex items-center gap-3 mb-4">
                     <span
-                      className={`w-4 h-4 rounded-full ${
-                        categoryColors[result.category] || "bg-slate-500"
-                      }`}
+                      className={`w-4 h-4 rounded-full ${categoryColors[result.category] || "bg-slate-500"
+                        }`}
                     />
                     <h2 className="text-2xl font-bold">{result.category}</h2>
                   </div>
@@ -300,52 +298,54 @@ export default function Home() {
                     </div>
                     <div className="w-full bg-slate-700 rounded-full h-2.5">
                       <div
-                        className={`h-2.5 rounded-full transition-all duration-700 ${
-                          result.confidence >= 80
-                            ? "bg-emerald-500"
-                            : result.confidence >= 50
+                        className={`h-2.5 rounded-full transition-all duration-700 ${result.confidence >= 80
+                          ? "bg-emerald-500"
+                          : result.confidence >= 50
                             ? "bg-yellow-500"
                             : "bg-red-500"
-                        }`}
+                          }`}
                         style={{ width: `${result.confidence}%` }}
                       />
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-slate-300 text-sm mb-4">
+                  {/* <p className="text-slate-300 text-sm mb-4">
                     {matchedCategory.description}
+                  </p> */}
+                  <p className="text-sm text-slate-400">
+                    <span className="font-semibold text-slate-300">
+                      AI Reasoning:{" "}
+                    </span>
+                    {result.reasoning}
                   </p>
 
                   {/* Asbestos Likelihood */}
-                  <div className={`p-3 rounded-lg border ${
-                    result.asbestosLikelihood >= 50
-                      ? "bg-red-500/15 border-red-500/40"
-                      : result.asbestosLikelihood >= 20
+                  <div className={`p-3 mt-3 rounded-lg border ${result.asbestosLikelihood >= 50
+                    ? "bg-red-500/15 border-red-500/40"
+                    : result.asbestosLikelihood >= 20
                       ? "bg-yellow-500/15 border-yellow-500/40"
                       : "bg-slate-900/50 border-transparent"
-                  }`}>
+                    }`}>
                     <div className="flex justify-between text-sm mb-1">
-                      <span className={`font-semibold ${
-                        result.asbestosLikelihood >= 50
-                          ? "text-red-400"
-                          : result.asbestosLikelihood >= 20
+                      <span className={`font-semibold ${result.asbestosLikelihood >= 50
+                        ? "text-red-400"
+                        : result.asbestosLikelihood >= 20
                           ? "text-yellow-400"
                           : "text-slate-400"
-                      }`}>
+                        }`}>
                         {result.asbestosLikelihood >= 50 ? "⚠ " : ""}Asbestos Likelihood
                       </span>
                       <span className="font-semibold">{result.asbestosLikelihood}%</span>
                     </div>
                     <div className="w-full bg-slate-700 rounded-full h-2">
                       <div
-                        className={`h-2 rounded-full transition-all duration-700 ${
-                          result.asbestosLikelihood >= 50
-                            ? "bg-red-500"
-                            : result.asbestosLikelihood >= 20
+                        className={`h-2 rounded-full transition-all duration-700 ${result.asbestosLikelihood >= 50
+                          ? "bg-red-500"
+                          : result.asbestosLikelihood >= 20
                             ? "bg-yellow-500"
                             : "bg-slate-500"
-                        }`}
+                          }`}
                         style={{ width: `${result.asbestosLikelihood}%` }}
                       />
                     </div>
@@ -356,43 +356,34 @@ export default function Home() {
                     )}
                   </div>
 
-                  {/* Overfilled Status */}
-                  <div className={`p-3 rounded-lg border ${
-                    result.isOverfilled === "Yes"
-                      ? "bg-red-500/15 border-red-500/40"
-                      : result.isOverfilled === "No"
-                      ? "bg-emerald-500/15 border-emerald-500/40"
-                      : "bg-slate-900/50 border-transparent"
-                  }`}>
-                    <div className="flex justify-between text-sm">
-                      <span className="font-semibold text-slate-300">Bin Overfilled</span>
-                      <span className={`font-semibold ${
-                        result.isOverfilled === "Yes"
-                          ? "text-red-400"
-                          : result.isOverfilled === "No"
-                          ? "text-emerald-400"
-                          : "text-slate-500"
-                      }`}>
-                        {result.isOverfilled === "Yes" ? "⚠ Yes" : result.isOverfilled}
-                      </span>
-                    </div>
-                    {result.isOverfilled === "Yes" && (
-                      <p className="text-xs text-red-400 mt-1">
-                        Materials appear to exceed the bin rim. This may incur additional charges.
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Reasoning */}
-                  <div className="p-3 bg-slate-900/50 rounded-lg">
-                    <p className="text-sm text-slate-400">
-                      <span className="font-semibold text-slate-300">
-                        AI Reasoning:{" "}
-                      </span>
-                      {result.reasoning}
-                    </p>
-                  </div>
                 </div>
+
+
+                {/* Overfilled Status */}
+                <div className={`p-3 rounded-lg border ${result.isOverfilled === "Yes"
+                  ? "bg-red-500/15 border-red-500/40"
+                  : result.isOverfilled === "No"
+                    ? "bg-emerald-500/15 border-emerald-500/40"
+                    : "bg-slate-900/50 border-transparent"
+                  }`}>
+                  <div className="flex justify-between text-sm">
+                    <span className="font-semibold text-slate-300">Bin Overfilled</span>
+                    <span className={`font-semibold ${result.isOverfilled === "Yes"
+                      ? "text-red-400"
+                      : result.isOverfilled === "No"
+                        ? "text-emerald-400"
+                        : "text-slate-500"
+                      }`}>
+                      {result.isOverfilled === "Yes" ? "⚠ Yes" : result.isOverfilled}
+                    </span>
+                  </div>
+                  {result.isOverfilled === "Yes" && (
+                    <p className="text-xs text-red-400 mt-1">
+                      Materials appear to exceed the bin rim. This may incur additional charges.
+                    </p>
+                  )}
+                </div>
+
 
                 {/* Detected Items */}
                 {result.detectedItems.length > 0 && (
@@ -441,9 +432,8 @@ export default function Home() {
                   {categories.map((cat) => (
                     <div key={cat.name} className="flex items-start gap-3">
                       <span
-                        className={`w-3 h-3 rounded-full mt-1 shrink-0 ${
-                          categoryColors[cat.name] || "bg-slate-500"
-                        }`}
+                        className={`w-3 h-3 rounded-full mt-1 shrink-0 ${categoryColors[cat.name] || "bg-slate-500"
+                          }`}
                       />
                       <div>
                         <p className="text-sm font-medium text-slate-300">
