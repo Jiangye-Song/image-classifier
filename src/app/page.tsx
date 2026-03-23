@@ -406,8 +406,8 @@ export default function Home() {
 
                 {/* Common Items for Category */}
                 <div className="p-5 bg-slate-800/80 rounded-2xl border border-slate-700">
-                  <h3 className="font-semibold mb-3 text-slate-300">
-                    Common Items in &quot;{matchedCategory.name}&quot;
+                  <h3 className="font-semibold mb-3 text-emerald-400">
+                    ✓ Accepted in &quot;{matchedCategory.name}&quot;
                   </h3>
                   <ul className="space-y-1">
                     {matchedCategory.commonItems.map((item, i) => (
@@ -415,7 +415,25 @@ export default function Home() {
                         key={i}
                         className="text-sm text-slate-400 flex items-center gap-2"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Cannot Contain */}
+                <div className="p-5 bg-slate-800/80 rounded-2xl border border-red-500/20">
+                  <h3 className="font-semibold mb-3 text-red-400">
+                    ✗ NOT Accepted
+                  </h3>
+                  <ul className="space-y-1">
+                    {matchedCategory.cannotContain.map((item, i) => (
+                      <li
+                        key={i}
+                        className="text-sm text-slate-400 flex items-center gap-2"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
                         {item}
                       </li>
                     ))}

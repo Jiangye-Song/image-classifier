@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
     const categoryList = categories
       .map(
         (c) =>
-          `- "${c.name}": ${c.description}. Common items: ${c.commonItems.join(", ")}.`
+          `- "${c.name}": ${c.description}. Accepted items: ${c.commonItems.join("; ")}. NOT accepted: ${c.cannotContain.join("; ")}.`
       )
       .join("\n");
 
