@@ -1,22 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect } from "react";
-import { categories } from "@/lib/categories";
-
-interface ClassificationResult {
-  category: string;
-  confidence: number;
-  reasoning: string;
-  detectedItems: string[];
-  asbestosLikelihood: number;
-  isOverfilled: "Yes" | "No" | "N/A";
-}
-
-interface Model {
-  id: string;
-  name: string;
-  description?: string;
-}
+import { categories, type ClassificationResult, type Model } from "@/lib/categories";
 
 const categoryColors: Record<string, string> = {
   "Household Rubbish": "bg-yellow-500",
@@ -362,7 +347,7 @@ export default function Home() {
                 {/* Overfilled Status */}
                 <div className={`p-3 rounded-lg border ${result.isOverfilled === "Yes"
                   ? "bg-red-500/15 border-red-500/40"
-                  : result.isOverfilled === "No"
+                  : result.isOverfilled === "No" || result.isOverfilled === "Little"
                     ? "bg-emerald-500/15 border-emerald-500/40"
                     : "bg-slate-900/50 border-transparent"
                   }`}>
@@ -370,7 +355,7 @@ export default function Home() {
                     <span className="font-semibold text-slate-300">Bin Overfilled</span>
                     <span className={`font-semibold ${result.isOverfilled === "Yes"
                       ? "text-red-400"
-                      : result.isOverfilled === "No"
+                      : result.isOverfilled === "No" || result.isOverfilled === "Little"
                         ? "text-emerald-400"
                         : "text-slate-500"
                       }`}>

@@ -1,3 +1,18 @@
+export interface ClassificationResult {
+  category: string;
+  confidence: number;
+  reasoning: string;
+  detectedItems: string[];
+  asbestosLikelihood: number;
+  isOverfilled: "Yes" | "No" | "Little" | "N/A";
+}
+
+export interface Model {
+  id: string;
+  name: string;
+  description?: string;
+}
+
 export interface Category {
   name: string;
   description: string;

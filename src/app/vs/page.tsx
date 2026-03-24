@@ -1,21 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect } from "react";
-
-interface ClassificationResult {
-  category: string;
-  confidence: number;
-  reasoning: string;
-  detectedItems: string[];
-  asbestosLikelihood: number;
-  isOverfilled: "Yes" | "No" | "N/A";
-}
-
-interface Model {
-  id: string;
-  name: string;
-  description?: string;
-}
+import { type ClassificationResult, type Model } from "@/lib/categories";
 
 interface ColumnState {
   selectedModel: string;
@@ -378,7 +364,7 @@ export default function VsPage() {
                   <div className={`p-2.5 rounded-lg border ${
                     col.result.isOverfilled === "Yes"
                       ? "bg-red-500/15 border-red-500/40"
-                      : col.result.isOverfilled === "No"
+                      : col.result.isOverfilled === "No" || col.result.isOverfilled === "Little"
                         ? "bg-emerald-500/15 border-emerald-500/40"
                         : "bg-slate-900/50 border-transparent"
                   }`}>
@@ -387,7 +373,7 @@ export default function VsPage() {
                       <span className={`font-semibold ${
                         col.result.isOverfilled === "Yes"
                           ? "text-red-400"
-                          : col.result.isOverfilled === "No"
+                          : col.result.isOverfilled === "No" || col.result.isOverfilled === "Little"
                             ? "text-emerald-400"
                             : "text-slate-500"
                       }`}>
@@ -468,7 +454,7 @@ export default function VsPage() {
               <div className={`p-4 rounded-xl text-center ${
                 verdict.isOverfilled === "Yes"
                   ? "bg-red-500/15"
-                  : verdict.isOverfilled === "No"
+                  : verdict.isOverfilled === "No" || verdict.isOverfilled === "Little"
                     ? "bg-emerald-500/15"
                     : "bg-slate-900/60"
               }`}>
@@ -476,7 +462,7 @@ export default function VsPage() {
                 <span className={`text-2xl font-bold ${
                   verdict.isOverfilled === "Yes"
                     ? "text-red-400"
-                    : verdict.isOverfilled === "No"
+                    : verdict.isOverfilled === "No" || verdict.isOverfilled === "Little"
                       ? "text-emerald-400"
                       : "text-slate-500"
                 }`}>

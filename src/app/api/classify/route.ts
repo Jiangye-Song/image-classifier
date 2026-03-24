@@ -50,7 +50,7 @@ Respond ONLY with valid JSON in this exact format (no markdown, no code blocks):
   "reasoning": "<brief explanation of why this category was chosen>",
   "detectedItems": ["<item 1>", "<item 2>", "<item 3>"],
   "asbestosLikelihood": <number between 0 and 100>,
-  "isOverfilled": "<Yes | No | N/A>"
+  "isOverfilled": "<Yes | Little | No | N/A>"
 }
 
 Rules:
@@ -58,7 +58,7 @@ Rules:
 - "confidence" is a percentage from 0-100
 - "detectedItems" lists specific items you can identify in the image
 - "asbestosLikelihood" is a percentage from 0-100 estimating the probability the image contains asbestos materials (e.g. fibro sheeting, cement sheets, old roofing, textured cladding). Always assess this independently regardless of the chosen category. Be cautious and flag even slight visual cues of asbestos-containing materials.
-- "isOverfilled" must be exactly "Yes" if the bin is overfilled (materials sticking above the bin rim), "No" if the bin is not overfilled, or "N/A" if no bin is visible in the image
+- "isOverfilled" must be exactly "Yes" if the bin is clearly overfilled (materials sticking significantly above the bin rim), "Little" if there is a slight overfill but within a reasonable range (materials barely above the rim), "No" if the bin is not overfilled, or "N/A" if no bin is visible in the image
 - If the image does not contain waste or skip bin materials, set category to the closest match and add a note in reasoning`;
 
     const selectedModel = modelId || "google/gemini-2.0-flash-lite";
