@@ -15,7 +15,7 @@ export default function Home() {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-3">
           {/* Single Model */}
           <Link
             href="/classify"
@@ -73,6 +73,36 @@ export default function Home() {
             </p>
             <span className="inline-block mt-4 text-emerald-400 font-semibold group-hover:translate-x-1 transition-transform">
               Compare models &rarr;
+            </span>
+          </Link>
+
+          {/* Weight Check */}
+          <Link
+            href="/weight-check"
+            className="group p-8 bg-slate-800/60 rounded-2xl border border-slate-700 hover:border-amber-500/50 hover:bg-slate-800/80 transition-all"
+          >
+            <div className="mb-4">
+              <svg
+                className="w-12 h-12 text-amber-400 group-hover:scale-110 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971zm-13.5 0c-1.01.143-2.01.317-3 .52m3-.52L2.63 15.696c-.122.499.106 1.028.589 1.202a5.989 5.989 0 002.031.352 5.989 5.989 0 002.031-.352c.483-.174.711-.703.59-1.202L5.25 4.971z"
+                />
+              </svg>
+            </div>
+            <h2 className="text-2xl font-bold mb-2">Weight Check</h2>
+            <p className="text-slate-400">
+              Upload a weighbridge receipt to verify if the load matches the
+              expected weight.
+            </p>
+            <span className="inline-block mt-4 text-amber-400 font-semibold group-hover:translate-x-1 transition-transform">
+              Check weight &rarr;
             </span>
           </Link>
         </div>
