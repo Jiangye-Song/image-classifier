@@ -180,7 +180,7 @@ export const categories: Category[] = [
     ],
   },
   {
-    name: "Bricks & Concrete",
+    name: "Mix of Bricks & Concrete",
     description:
       "Heavy masonry materials from demolition and construction projects. Weight restrictions apply due to dense materials. Keeping heavy waste separate helps ensure proper recycling and reduces disposal costs.",
     commonItems: [
@@ -211,7 +211,7 @@ export const categories: Category[] = [
     ],
   },
   {
-    name: "Steel",
+    name: "Steel & Scrap Metal",
     description:
       "Steel is one of the most recyclable materials. Proper separation supports sustainable recycling. Ideal for construction sites, demolition projects, workshops, and scrap clean-ups. Must contain predominantly steel or metal.",
     commonItems: [
@@ -332,6 +332,80 @@ export const categories: Category[] = [
       "Wet concrete or slurry",
       "Hot ash",
       "Silica dust",
+    ],
+  },
+  {
+    name: "Bricks",
+    description:
+      "Brick-based construction materials from demolition and building projects. Keeping brick waste separate ensures proper recycling and reduces disposal costs. Brick bins are for bricks only.",
+    commonItems: [
+      "Whole bricks: clay, pressed, or extruded bricks",
+      "Broken bricks: chipped, cracked, or halved bricks",
+      "Brick rubble: crushed brick debris from demolition",
+      "Clay bricks: standard fired clay bricks of all sizes",
+      "Face bricks: decorative or exposed bricks",
+      "Engineering bricks: high-strength bricks used in structural work",
+    ],
+    cannotContain: [
+      "Concrete or pavers (use a Bricks & Concrete bin)",
+      "Asbestos materials",
+      "Timber or wood",
+      "General rubbish or mixed waste",
+      "Soil or dirt (unless pre-approved)",
+      "Hazardous or contaminated waste",
+      "Chemicals, fuels, gas or oils",
+      "Plasterboard or gyprock",
+      "Hot ash",
+    ],
+  },
+  {
+    name: "Concrete",
+    description:
+      "Concrete materials from demolition and construction projects, including reinforced and non-reinforced concrete. Weight restrictions apply due to the dense nature of concrete. Keeping concrete waste separate ensures proper recycling and reduces disposal costs.",
+    commonItems: [
+      "Concrete: solid concrete pieces and blocks",
+      "Concrete slabs: whole or broken concrete slabs",
+      "Concrete rubble: crushed concrete debris from demolition",
+      "Concrete blocks: standard and lightweight concrete blocks",
+      "Concrete pavers: concrete paving stones and tiles",
+      "Concrete footings: foundation concrete from excavation",
+    ],
+    cannotContain: [
+      "Reinforced concrete (unless pre-approved)",
+      "Wet concrete or slurry",
+      "Asbestos materials",
+      "Timber or wood",
+      "General rubbish or mixed waste",
+      "Soil or dirt (unless pre-approved)",
+      "Hazardous or contaminated waste",
+      "Chemicals, fuels, gas or oils",
+      "Plasterboard or gyprock",
+      "Hot ash",
+    ],
+  },
+  {
+    name: "Construction Waste with Soil (Mixed Heavy)",
+    description:
+      "Mixed heavy construction waste combined with soil from excavation, demolition, or site cleanup projects. Due to the heavy nature of these materials, weight limits apply.",
+    commonItems: [
+      "Bricks & concrete with soil: mixed masonry materials combined with dirt or soil",
+      "Dirt mixed with rubble: soil containing small pieces of construction debris",
+      "Excavation waste: materials removed during site excavation",
+      "Mixed fill: soil combined with construction debris (bricks, concrete, rubble)",
+      "Clay with construction debris: clay mixed with inert building materials",
+      "Sand with rubble: sand containing small amounts of masonry or concrete",
+    ],
+    cannotContain: [
+      "Asbestos materials",
+      "Timber or wood",
+      "General rubbish or household waste",
+      "Green waste or organic matter",
+      "Hazardous or contaminated soil",
+      "Chemicals, fuels, gas or oils",
+      "Plasterboard or gyprock",
+      "Plastic, glass or metal",
+      "Hot ash",
+      "Wet concrete or slurry",
     ],
   },
 ];
